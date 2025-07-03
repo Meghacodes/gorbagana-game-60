@@ -1,73 +1,187 @@
-# Welcome to your Lovable project
 
-## Project info
+# Gorbagana GameHub - Token-Gated Gaming Platform
 
-**URL**: https://lovable.dev/projects/97d80b79-1d68-400e-a620-163e5fbf62d3
+A decentralized gaming platform built for the Gorbagana testnet, featuring token-gated access and reward-based gameplay mechanics.
 
-## How can I edit this code?
+## 🎮 Game Overview
 
-There are several ways of editing your application.
+Gorbagana GameHub is a comprehensive gaming platform that combines classic arcade games with blockchain tokenomics. Players use GORB tokens to access games and earn rewards based on their performance.
 
-**Use Lovable**
+### Available Games
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/97d80b79-1d68-400e-a620-163e5fbf62d3) and start prompting.
+1. **Snake Classic** 🐍
+   - Classic mobile snake gameplay with continuous movement
+   - Entry Fee: 45 GORB tokens
+   - Max Reward: 100 GORB tokens
+   - Challenge: Avoid hitting walls or yourself while growing
 
-Changes made via Lovable will be committed automatically to this repo.
+2. **Fruit Luck** 🍎
+   - 3-column slot machine with fruit matching
+   - Entry Fee: 45 GORB tokens
+   - Max Reward: 150 GORB tokens
+   - Objective: Match 3 identical fruits in a row
 
-**Use your preferred IDE**
+3. **Crossword Challenge** 📝
+   - Interactive crossword puzzle with hints
+   - Entry Fee: 45 GORB tokens
+   - Max Reward: 120 GORB tokens
+   - Challenge: Complete the crossword using provided clues
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🔗 Gorbagana Integration
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Current Implementation
+- **Token System**: Local GORB token management with daily faucet
+- **Daily Faucet**: Players can claim 100 GORB tokens every 24 hours
+- **Game Entry**: Each game requires 45 GORB tokens to play
+- **Reward System**: Token rewards based on game performance
+- **Wallet Integration**: Backpack wallet connection simulation
 
-Follow these steps:
+### Planned Gorbagana Testnet Integration
+- **Native Token Transactions**: Direct interaction with Gorbagana testnet
+- **Real Wallet Integration**: Full Backpack wallet connectivity
+- **On-chain Rewards**: Blockchain-verified token distribution
+- **Multiplayer Functionality**: Real-time multiplayer game rooms
+- **Tournament System**: Competitive gameplay with leaderboards
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## 🚀 Technology Stack
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+- **Frontend**: React 18 + TypeScript + Vite
+- **UI Framework**: Tailwind CSS + shadcn/ui components
+- **State Management**: React Context API + TanStack Query
+- **Icons**: Lucide React
+- **Routing**: React Router DOM
+- **Build Tool**: Vite
+- **Backend**: Ready for Supabase integration
 
-# Step 3: Install the necessary dependencies.
-npm i
+## 📦 Installation & Setup
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+### Prerequisites
+- Node.js 18+ and npm
+- Modern web browser with ES6+ support
+
+### Local Development
+
+1. **Clone the repository**
+   ```bash
+   git clone <your-repository-url>
+   cd gorbagana-gamehub
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open in browser**
+   Navigate to `http://localhost:5173`
+
+### Production Build
+
+```bash
+npm run build
+npm run preview
 ```
 
-**Edit a file directly in GitHub**
+## 🎯 How to Play
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+1. **Connect Wallet**: Click "Connect Backpack Wallet" on the landing page
+2. **Claim Tokens**: Use the daily faucet to get 100 GORB tokens (24-hour cooldown)
+3. **Choose Game**: Select from Snake Classic, Fruit Luck, or Crossword Challenge
+4. **Pay Entry Fee**: Each game costs 45 GORB tokens to play
+5. **Play & Earn**: Complete games to earn token rewards based on performance
 
-**Use GitHub Codespaces**
+## 🏗️ Architecture
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Component Structure
+```
+src/
+├── components/
+│   ├── games/           # Game implementations
+│   ├── ui/              # Reusable UI components
+│   └── wallet/          # Wallet and token management
+├── context/             # React context providers
+├── hooks/               # Custom React hooks
+├── lib/                 # Utility functions
+└── pages/               # Route components
+```
 
-## What technologies are used for this project?
+### Key Features
+- **Token Context**: Centralized token state management
+- **Game Hub**: Main game selection interface
+- **Responsive Design**: Mobile-first responsive layout
+- **Real-time Updates**: Live token balance and timer updates
+- **Modular Architecture**: Easy to extend with new games
 
-This project is built with:
+## 🔮 Roadmap
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Phase 1: Backend Integration ✅
+- [x] Supabase integration setup
+- [ ] Real-time database configuration
+- [ ] User authentication system
+- [ ] Token transaction logging
 
-## How can I deploy this project?
+### Phase 2: Blockchain Integration 🚧
+- [ ] Gorbagana testnet connection
+- [ ] Native GORB token integration
+- [ ] Backpack wallet full integration
+- [ ] On-chain transaction verification
 
-Simply open [Lovable](https://lovable.dev/projects/97d80b79-1d68-400e-a620-163e5fbf62d3) and click on Share -> Publish.
+### Phase 3: Multiplayer Features 🔄
+- [ ] Real-time multiplayer Snake
+- [ ] Tournament bracketing system
+- [ ] Global leaderboards
+- [ ] Player matchmaking
 
-## Can I connect a custom domain to my Lovable project?
+### Phase 4: Advanced Features 🎯
+- [ ] NFT rewards system
+- [ ] Staking mechanisms
+- [ ] Social features and profiles
+- [ ] Mobile app development
 
-Yes, you can!
+## 🛠️ Development Notes
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Adding New Games
+1. Create game component in `src/components/games/`
+2. Add game configuration to `GameHub.tsx`
+3. Implement token spending/earning logic
+4. Add game-specific UI components
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+### Token Management
+- Tokens stored in localStorage (development)
+- Daily claim cooldown managed via timestamps
+- Game entry fees automatically deducted
+- Rewards added based on game completion
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create feature branch (`git checkout -b feature/amazing-game`)
+3. Commit changes (`git commit -m 'Add amazing new game'`)
+4. Push to branch (`git push origin feature/amazing-game`)
+5. Open Pull Request
+
+## 📜 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🐦 Social Media
+
+Follow development progress and updates:
+- Tweet using hashtag #GorbaganaTestnet
+- Tag @Gorbagana_chain, @sarv_shaktimaan, and @lex_node
+
+## 📞 Support
+
+For technical support or questions:
+- Create an issue in this repository
+- Join the Gorbagana community Discord
+- Follow project updates on Twitter
+
+---
+
+**Built with ❤️ for the Gorbagana ecosystem**
