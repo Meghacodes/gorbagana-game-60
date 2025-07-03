@@ -13,16 +13,6 @@ export const useMultiplayer = (walletAddress?: string) => {
   const [roomPlayers, setRoomPlayers] = useState<RoomPlayer[]>([]);
   const [loading, setLoading] = useState(false);
 
-  // Set wallet context for RLS
-  useEffect(() => {
-    if (walletAddress) {
-      supabase.rpc('set_config', {
-        setting_name: 'app.current_wallet',
-        setting_value: walletAddress
-      });
-    }
-  }, [walletAddress]);
-
   // Fetch available game rooms
   const fetchGameRooms = async () => {
     setLoading(true);
