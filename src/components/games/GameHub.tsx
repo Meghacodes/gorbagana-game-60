@@ -7,13 +7,17 @@ import SnakeGame from './SnakeGame';
 import FruitLuck from './FruitLuck';
 import CrosswordPuzzle from './CrosswordPuzzle';
 import MultiplayerHub from '../multiplayer/MultiplayerHub';
+import TournamentHub from '../multiplayer/TournamentHub';
+import Leaderboard from '../multiplayer/Leaderboard';
 import { useTokens } from '@/context/TokenContext';
 import { Button } from '@/components/ui/button';
-import { Users } from 'lucide-react';
+import { Users, Trophy, Crown } from 'lucide-react';
 
 const GameHub = () => {
   const [selectedGame, setSelectedGame] = useState<string | null>(null);
   const [showMultiplayer, setShowMultiplayer] = useState(false);
+  const [showTournaments, setShowTournaments] = useState(false);
+  const [showLeaderboard, setShowLeaderboard] = useState(false);
   const { tokenBalance } = useTokens();
 
   // Get wallet address from localStorage for demo
@@ -65,6 +69,14 @@ const GameHub = () => {
     return <MultiplayerHub walletAddress={walletAddress} onBack={() => setShowMultiplayer(false)} />;
   }
 
+  if (showTournaments) {
+    return <TournamentHub walletAddress={walletAddress} onBack={() => setShowTournaments(false)} />;
+  }
+
+  if (showLeaderboard) {
+    return <Leaderboard onBack={() => setShowLeaderboard(false)} />;
+  }
+
   return (
     <div className="min-h-screen p-6">
       <div className="max-w-7xl mx-auto">
@@ -79,14 +91,30 @@ const GameHub = () => {
           </div>
         </div>
 
-        {/* Multiplayer Button */}
-        <div className="flex justify-center mb-8">
+        {/* Navigation Buttons */}
+        <div className="flex flex-wrap justify-center gap-4 mb-8">
           <Button
             onClick={() => setShowMultiplayer(true)}
-            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300 transform hover:scale-105"
+            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 py-3 text-lg font-semibold rounded-xl transition-all duration-300 transform hover:scale-105"
           >
-            <Users className="w-6 h-6 mr-3" />
-            Join Multiplayer Rooms
+            <Users className="w-5 h-5 mr-2" />
+            Multiplayer Rooms
+          </Button>
+          
+          <Button
+            onClick={() => setShowTournaments(true)}
+            className="bg-gradient-to-r from-yellow-600 to-orange-600 hover:from-yellow-700 hover:to-orange-700 text-white px-6 py-3 text-lg font-semibold rounded-xl transition-all duration-300 transform hover:scale-105"
+          >
+            <Trophy className="w-5 h-5 mr-2" />
+            Tournaments
+          </Button>
+          
+          <Button
+            onClick={() => setShowLeaderboard(true)}
+            className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-6 py-3 text-lg font-semibold rounded-xl transition-all duration-300 transform hover:scale-105"
+          >
+            <Crown className="w-5 h-5 mr-2" />
+            Leaderboard
           </Button>
         </div>
 
@@ -105,9 +133,9 @@ const GameHub = () => {
         {/* Game Features Overview */}
         <div className="mt-12">
           <h2 className="text-2xl font-bold text-gray-300 mb-6 text-center">
-            Game Features
+            Platform Features
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-8xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-8xl mx-auto">
             <div className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 p-6 rounded-xl border border-purple-500/30">
               <h3 className="text-lg font-semibold text-purple-400 mb-3">🎮 Multiplayer Rooms</h3>
               <ul className="text-gray-300 text-sm space-y-1">
@@ -117,31 +145,34 @@ const GameHub = () => {
                 <li>• Shared prize pools</li>
               </ul>
             </div>
+            
+            <div className="bg-gradient-to-br from-yellow-900/30 to-orange-900/30 p-6 rounded-xl border border-yellow-500/30">
+              <h3 className="text-lg font-semibold text-yellow-400 mb-3">🏆 Tournaments</h3>
+              <ul className="text-gray-300 text-sm space-y-1">
+                <li>• Scheduled tournament events</li>
+                <li>• Large prize pools</li>
+                <li>• Competitive rankings</li>
+                <li>• Champion rewards</li>
+              </ul>
+            </div>
+            
+            <div className="bg-gradient-to-br from-blue-900/30 to-cyan-900/30 p-6 rounded-xl border border-blue-500/30">
+              <h3 className="text-lg font-semibold text-blue-400 mb-3">👑 Leaderboards</h3>
+              <ul className="text-gray-300 text-sm space-y-1">
+                <li>• Global player rankings</li>
+                <li>• Track your progress</li>
+                <li>• Seasonal competitions</li>
+                <li>• Achievement badges</li>
+              </ul>
+            </div>
+            
             <div className="bg-gradient-to-br from-green-900/30 to-emerald-900/30 p-6 rounded-xl border border-green-500/30">
-              <h3 className="text-lg font-semibold text-green-400 mb-3">🐍 Snake Classic</h3>
+              <h3 className="text-lg font-semibold text-green-400 mb-3">🔗 Blockchain Gaming</h3>
               <ul className="text-gray-300 text-sm space-y-1">
-                <li>• Classic mobile snake gameplay</li>
-                <li>• Constantly moving snake</li>
-                <li>• Grow by eating food</li>
-                <li>• Avoid hitting walls or yourself</li>
-              </ul>
-            </div>
-            <div className="bg-gradient-to-br from-red-900/30 to-pink-900/30 p-6 rounded-xl border border-red-500/30">
-              <h3 className="text-lg font-semibold text-red-400 mb-3">🍎 Fruit Luck</h3>
-              <ul className="text-gray-300 text-sm space-y-1">
-                <li>• 3 columns, 1 row slot machine</li>
-                <li>• Match 3 identical fruits</li>
-                <li>• Simple and fast gameplay</li>
-                <li>• High reward potential</li>
-              </ul>
-            </div>
-            <div className="bg-gradient-to-br from-blue-900/30 to-purple-900/30 p-6 rounded-xl border border-blue-500/30">
-              <h3 className="text-lg font-semibold text-blue-400 mb-3">📝 Crossword Challenge</h3>
-              <ul className="text-gray-300 text-sm space-y-1">
-                <li>• Classic crossword puzzle</li>
-                <li>• Hints provided for each word</li>
-                <li>• Test your vocabulary</li>
-                <li>• Complete to win tokens</li>
+                <li>• GORB token rewards</li>
+                <li>• Secure wallet integration</li>
+                <li>• Transparent transactions</li>
+                <li>• Decentralized gaming</li>
               </ul>
             </div>
           </div>
