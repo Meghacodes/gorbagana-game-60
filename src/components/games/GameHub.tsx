@@ -6,11 +6,18 @@ import GameCard from '@/components/ui/GameCard';
 import SnakeGame from './SnakeGame';
 import FruitLuck from './FruitLuck';
 import CrosswordPuzzle from './CrosswordPuzzle';
+import MultiplayerHub from '../multiplayer/MultiplayerHub';
 import { useTokens } from '@/context/TokenContext';
+import { Button } from '@/components/ui/button';
+import { Users } from 'lucide-react';
 
 const GameHub = () => {
   const [selectedGame, setSelectedGame] = useState<string | null>(null);
+  const [showMultiplayer, setShowMultiplayer] = useState(false);
   const { tokenBalance } = useTokens();
+
+  // Get wallet address from localStorage for demo
+  const walletAddress = localStorage.getItem('connectedWallet') || '';
 
   const games = [
     {
@@ -54,6 +61,10 @@ const GameHub = () => {
     return <CrosswordPuzzle onBack={() => setSelectedGame(null)} />;
   }
 
+  if (showMultiplayer) {
+    return <MultiplayerHub walletAddress={walletAddress} onBack={() => setShowMultiplayer(false)} />;
+  }
+
   return (
     <div className="min-h-screen p-6">
       <div className="max-w-7xl mx-auto">
@@ -66,6 +77,17 @@ const GameHub = () => {
             <TokenClaimer />
             <TokenBalance />
           </div>
+        </div>
+
+        {/* Multiplayer Button */}
+        <div className="flex justify-center mb-8">
+          <Button
+            onClick={() => setShowMultiplayer(true)}
+            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300 transform hover:scale-105"
+          >
+            <Users className="w-6 h-6 mr-3" />
+            Join Multiplayer Rooms
+          </Button>
         </div>
 
         {/* Games Grid */}
@@ -85,7 +107,16 @@ const GameHub = () => {
           <h2 className="text-2xl font-bold text-gray-300 mb-6 text-center">
             Game Features
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-8xl mx-auto">
+            <div className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 p-6 rounded-xl border border-purple-500/30">
+              <h3 className="text-lg font-semibold text-purple-400 mb-3">🎮 Multiplayer Rooms</h3>
+              <ul className="text-gray-300 text-sm space-y-1">
+                <li>• Real-time multiplayer gameplay</li>
+                <li>• Create or join game rooms</li>
+                <li>• Compete with other players</li>
+                <li>• Shared prize pools</li>
+              </ul>
+            </div>
             <div className="bg-gradient-to-br from-green-900/30 to-emerald-900/30 p-6 rounded-xl border border-green-500/30">
               <h3 className="text-lg font-semibold text-green-400 mb-3">🐍 Snake Classic</h3>
               <ul className="text-gray-300 text-sm space-y-1">
